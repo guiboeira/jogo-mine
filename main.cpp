@@ -11,9 +11,7 @@ const int COLUNAS = 20;
 int main() {
     srand(time(0));
 
-    cout << "=========================================" << endl;
     cout << "    BEM-VINDO AO MINECRAFT: MUNDO QUADRADO " << endl;
-    cout << "=========================================" << endl;
     cout << "\nEscolha o seu objetivo para esta partida:\n";
     cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)\n";
     cout << "2 - Corrida (Coletar 1 fruta e 3 animais)\n";
@@ -168,10 +166,7 @@ int main() {
         }
     }
 
-    cout << "\n=========================================" << endl;
     cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
-    cout << "           SESSAO TERMINADA COM SUCESSO   " << endl;
-    cout << "=========================================" << endl;
 
     return 0;
 }
