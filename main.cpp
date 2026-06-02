@@ -85,7 +85,6 @@ int main() {
     int jogoAtivo = 1; 
 
     while (jogoAtivo == 1) {
-        cout << "\n=========================================" << endl;
         cout << " Posicao Atual no Mapa: [" << jogadorX << "][" << jogadorY << "]" << endl;
         cout << " INVENTARIO ATUAL:" << endl;
         cout << " Gravetos: " << invGravetos << " / " << metaGravetos << endl;
@@ -93,7 +92,6 @@ int main() {
         cout << " Frutas:   " << invFrutas << " / " << metaFrutas << endl;
         cout << " Animais:  " << invAnimais << " / " << metaAnimais << endl;
         cout << " Arvores:  " << invArvores << " / " << metaArvores << endl;
-        cout << "=========================================" << endl;
 
         cout << "Movimente-se (W: Cima, S: Baixo, A: Esquerda, D: Direita): ";
         char movimento;
