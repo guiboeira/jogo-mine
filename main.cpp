@@ -9,17 +9,16 @@ const int LINHAS = 20;
 const int COLUNAS = 20;
 
 int main() {
-    srand(time(0));
 
     cout << "    BEM-VINDO AO MINECRAFT: MUNDO QUADRADO " << endl;
-    cout << "\nEscolha o seu objetivo para esta partida:\n";
-    cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)\n";
-    cout << "2 - Corrida (Coletar 1 fruta e 3 animais)\n";
-    cout << "3 - Construcao (Coletar 3 pedras e 4 arvores)\n";
+    cout << "Escolha o seu objetivo para esta partida:";
+    cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)";
+    cout << "2 - Corrida (Coletar 1 fruta e 3 animais)";
+    cout << "3 - Construcao (Coletar 3 pedras e 4 arvores)";
     cout << "Digite o numero da sua escolha: ";
     
-    int escolhaObjetivo;
-    cin >> escolhaObjetivo;
+    int escolhaobjetivo;
+    cin >> escolhaobjetivo;
 
     int metaGravetos = 0;
     int metaPedras = 0;
@@ -27,26 +26,26 @@ int main() {
     int metaAnimais = 0;
     int metaArvores = 0;
 
-    switch (escolhaObjetivo) {
+    switch (escolhaobjetivo) {
         case 1:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "\nObjetivo selecionado: Luz e calor!\n";
+            cout << "Objetivo selecionado: Luz e calor!";
             break;
         case 2:
             metaFrutas = 1; 
             metaAnimais = 3;
-            cout << "\nObjetivo selecionado: Corrida!\n";
+            cout << "Objetivo selecionado: Corrida!";
             break;
         case 3:
             metaPedras = 3; 
             metaArvores = 4;
-            cout << "\nObjetivo selecionado: Construcao!\n";
+            cout << "Objetivo selecionado: Construcao!";
             break;
         default:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "\nOpcao invalida! Iniciando com o objetivo padrao: Luz e calor.\n";
+            cout << "Opcao invalida! Iniciando com o objetivo padrao: Luz e calor.";
             break;
     }
 
@@ -106,7 +105,7 @@ int main() {
             proxX = proxX + 1;
         } else if (movimento == 'a' || movimento == 'A') {
             proxY = proxY - 1;
-        } else if (movimento == 'd' || movimiento == 'D') {
+        } else if (movimento == 'd' || movimento == 'D') {
             proxY = proxY + 1;
         } else {
             cout << "Comando invalido! Escolha apenas entre W, A, S ou D." << endl;
@@ -123,15 +122,15 @@ int main() {
         
         if (itemAtual != 0) {
             if (itemAtual == 1) {
-                cout << "\n[Encontrado] Voce avistou um Graveto!" << endl;
+                cout << "[Encontrado] Voce avistou um Graveto!" << endl;
             } else if (itemAtual == 2) {
-                cout << "\n[Encontrado] Voce avistou uma Pedra!" << endl;
+                cout << "[Encontrado] Voce avistou uma Pedra!" << endl;
             } else if (itemAtual == 3) {
-                cout << "\n[Encontrado] Voce avistou uma Fruta!" << endl;
+                cout << "[Encontrado] Voce avistou uma Fruta!" << endl;
             } else if (itemAtual == 4) {
-                cout << "\n[Encontrado] Voce avistou um Animal!" << endl;
+                cout << "[Encontrado] Voce avistou um Animal!" << endl;
             } else if (itemAtual == 5) {
-                cout << "\n[Encontrado] Voce avistou uma Arvore!" << endl;
+                cout << "[Encontrado] Voce avistou uma Arvore!" << endl;
             }
 
             cout << "Deseja recolher este item para o inventario? (S - Sim / N - Nao): ";
