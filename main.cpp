@@ -2,6 +2,7 @@
 #include <string>
 #include <cstdlib> 
 #include <ctime>   
+#include <iomanip>
 
 using namespace std;
 
@@ -9,12 +10,14 @@ const int LINHAS = 20;
 const int COLUNAS = 20;
 
 int main() {
+    srand(time(0));
+    
 
     cout << "    BEM-VINDO AO MINECRAFT: MUNDO QUADRADO " << endl;
-    cout << "Escolha o seu objetivo para esta partida:";
-    cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)";
-    cout << "2 - Corrida (Coletar 1 fruta e 3 animais)";
-    cout << "3 - Construcao (Coletar 3 pedras e 4 arvores)";
+    cout << "Escolha o seu objetivo para esta partida:" << endl;
+    cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)" << endl;
+    cout << "2 - Corrida (Coletar 1 fruta e 3 animais)" << endl;
+    cout << "3 - Construcao (Coletar 3 pedras e 4 arvores)" << endl;
     cout << "Digite o numero da sua escolha: ";
     
     int escolhaobjetivo;
@@ -24,28 +27,28 @@ int main() {
     int metaPedras = 0;
     int metaFrutas = 0;
     int metaAnimais = 0;
-    int metaArvores = 0;
+    int metaMadeira = 0;
 
     switch (escolhaobjetivo) {
         case 1:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "Objetivo selecionado: Luz e calor!";
+            cout << "\nObjetivo selecionado: Luz e calor!";
             break;
         case 2:
             metaFrutas = 1; 
             metaAnimais = 3;
-            cout << "Objetivo selecionado: Corrida!";
+            cout << "\nObjetivo selecionado: Corrida!";
             break;
         case 3:
             metaPedras = 3; 
-            metaArvores = 4;
-            cout << "Objetivo selecionado: Construcao!";
+            metaMadeira = 4;
+            cout << "\nObjetivo selecionado: Construcao!";
             break;
         default:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "Opcao invalida! Iniciando com o objetivo padrao: Luz e calor.";
+            cout << "\nOpcao invalida! Iniciando com o objetivo padrao: Luz e calor.";
             break;
     }
 
@@ -71,15 +74,15 @@ int main() {
         }
     }
 
-    int jogadorX = 0; 
-    int jogadorY = 0; 
+    int jogadorX = LINHAS / 2;
+    int jogadorY = COLUNAS / 2;
     mapa[jogadorX][jogadorY] = 0; 
 
     int invGravetos = 0;
     int invPedras = 0;
     int invFrutas = 0;
     int invAnimais = 0;
-    int invArvores = 0;
+    int invMadeira = 0;
     
     int jogoAtivo = 1; 
 
@@ -90,7 +93,7 @@ int main() {
         cout << " Pedras:   " << invPedras << " / " << metaPedras << endl;
         cout << " Frutas:   " << invFrutas << " / " << metaFrutas << endl;
         cout << " Animais:  " << invAnimais << " / " << metaAnimais << endl;
-        cout << " Arvores:  " << invArvores << " / " << metaArvores << endl;
+        cout << " Arvores:  " << invMadeira << " / " << metaMadeira << endl;
 
         cout << "Movimente-se (W: Cima, S: Baixo, A: Esquerda, D: Direita): ";
         char movimento;
@@ -147,7 +150,7 @@ int main() {
                 } else if (itemAtual == 4) {
                     invAnimais = invAnimais + 1;
                 } else if (itemAtual == 5) {
-                    invArvores = invArvores + 1;
+                    invMadeira = invMadeira + 1;
                 }
 
                 mapa[jogadorX][jogadorY] = 0; 
@@ -157,13 +160,51 @@ int main() {
 
         if (invGravetos >= metaGravetos && invPedras >= metaPedras && 
             invFrutas >= metaFrutas && invAnimais >= metaAnimais && 
-            invArvores >= metaArvores) {
+            invMadeira >= metaMadeira) 
+        {
+
             
             jogoAtivo = 0; 
         }
+        cout << "\n╔════════ LEGENDA ════════╗" << endl;
+        cout << "║ 😎 Jogador  🥖 Graveto ║" << endl;
+        cout << "║ 🌑 Pedra    🍓 Fruta   ║" << endl;
+        cout << "║ 🐷 Animal   🌲 Madeira  ║" << endl;
+        cout << "║ . Espaco vazio          ║" << endl;
+        cout << "╚═════════════════════════╝" << endl;
+
+        cout << "\n============================ MAPA =============================\n";
+
+        for (int i = 0; i < LINHAS; i++)
+        {
+            cout << "║ ";
+        
+
+            for (int j = 0; j < COLUNAS; j++)
+            {
+                if (i == jogadorX && j == jogadorY)
+                    cout << setw(4) << "😎 ";
+                else if (mapa[i][j] == 1)
+                    cout <<setw(4) <<  "🥖 ";
+                else if (mapa[i][j] == 2)
+                    cout << setw(4) << "🌑 ";
+                else if (mapa[i][j] == 3)
+                    cout << setw(4) << "🍓 ";
+                else if (mapa[i][j] == 4)
+                    cout << setw(4) << "🐷 ";
+                else if (mapa[i][j] == 5)
+                    cout << setw(4) << "🌲 ";
+                else
+                    cout << setw(4) << "⬛";
+            }
+            cout << "║" << endl;
+        }
+    
     }
+        cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
 
-    cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
-
-    return 0;
+        return 0;
 }
+
+
+
