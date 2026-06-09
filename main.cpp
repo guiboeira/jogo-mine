@@ -68,6 +68,9 @@ int main() {
                 mapa[i][j] = 4; 
             } else if (sorteio < 60) {
                 mapa[i][j] = 5; 
+            }
+            else if (sorteio < 65) {
+                mapa[i][j] = 6; 
             } else {
                 mapa[i][j] = 0; 
             }
@@ -83,17 +86,55 @@ int main() {
     int invFrutas = 0;
     int invAnimais = 0;
     int invMadeira = 0;
+    int vidas = 3;
     
     int jogoAtivo = 1; 
-
+    cout << "\n╔════════ LEGENDA ════════╗" << endl;
+        cout << "║ 😎 Jogador  🥖 Graveto  ║" << endl;
+        cout << "║ 🌑 Pedra    🍓 Fruta    ║" << endl;
+        cout << "║ 🐷 Animal   🌲 Madeira   ║" << endl;
+        cout << "║ ⬛ Espaco vazio          ║" << endl;
+        cout << "║ 🧟 Zombi                 ║" << endl;
+        cout << "╚═════════════════════════╝" << endl;
     while (jogoAtivo == 1) {
+        
+
+        cout << "\n============================ MAPA =============================\n";
+
+        for (int i = 0; i < LINHAS; i++)
+        {
+            cout << "║ ";
+        
+
+            for (int j = 0; j < COLUNAS; j++)
+            {
+                if (i == jogadorX && j == jogadorY)
+                    cout << setw(4) << "😎 ";
+                else if (mapa[i][j] == 1)
+                    cout <<setw(4) <<  "🥖 ";
+                else if (mapa[i][j] == 2)
+                    cout << setw(4) << "🌑 ";
+                else if (mapa[i][j] == 3)
+                    cout << setw(4) << "🍓 ";
+                else if (mapa[i][j] == 4)
+                    cout << setw(4) << "🐷 ";
+                else if (mapa[i][j] == 5)
+                    cout << setw(4) << "🌲 ";
+                else if (mapa[i][j] == 6)
+                    cout << setw(4) << "🧟 ";
+                else
+                    cout << setw(4) << "⬛";
+            }
+            cout << "║" << endl;
+        }
         cout << " Posicao Atual no Mapa: [" << jogadorX << "][" << jogadorY << "]" << endl;
         cout << " INVENTARIO ATUAL:" << endl;
-        cout << " Gravetos: " << invGravetos << " / " << metaGravetos << endl;
-        cout << " Pedras:   " << invPedras << " / " << metaPedras << endl;
-        cout << " Frutas:   " << invFrutas << " / " << metaFrutas << endl;
-        cout << " Animais:  " << invAnimais << " / " << metaAnimais << endl;
-        cout << " Arvores:  " << invMadeira << " / " << metaMadeira << endl;
+        cout << "❤️ Vidas:    " << vidas << " / 3" << endl;
+        cout << "🥖 Gravetos: " << invGravetos << " / " << metaGravetos << endl;
+        cout << "🌑 Pedras:   " << invPedras << " / " << metaPedras << endl;
+        cout << "🍓 Frutas:   " << invFrutas << " / " << metaFrutas << endl;
+        cout << "🐷 Animais:  " << invAnimais << " / " << metaAnimais << endl;
+        cout << "🌲 Arvores:  " << invMadeira << " / " << metaMadeira << endl;
 
         cout << "Movimente-se (W: Cima, S: Baixo, A: Esquerda, D: Direita): ";
         char movimento;
@@ -122,24 +163,63 @@ int main() {
         }
 
         int itemAtual = mapa[jogadorX][jogadorY];
-        
+        char coletar = 'n';
         if (itemAtual != 0) {
-            if (itemAtual == 1) {
-                cout << "[Encontrado] Voce avistou um Graveto!" << endl;
-            } else if (itemAtual == 2) {
-                cout << "[Encontrado] Voce avistou uma Pedra!" << endl;
-            } else if (itemAtual == 3) {
-                cout << "[Encontrado] Voce avistou uma Fruta!" << endl;
-            } else if (itemAtual == 4) {
-                cout << "[Encontrado] Voce avistou um Animal!" << endl;
-            } else if (itemAtual == 5) {
-                cout << "[Encontrado] Voce avistou uma Arvore!" << endl;
+            
+            
+            if (itemAtual == 6)
+            {
+                cout << "\n🧟 UM ZUMBI APARECEU!\n";
+                cout << "Deseja lutar? (S/N): ";
+                char escolha;
+                cin >> escolha;
+                if (escolha == 's' || escolha == 'n')
+                {
+                    int sorteioLuta = rand() % 100;
+
+                    if (sorteioLuta < 60)
+                    {
+                        cout << "\n⚔️ Voce derrotou o zumbi!\n";
+
+                        mapa[jogadorX][jogadorY] = 0;
+                    }
+                    else
+                    {
+                        vidas--;
+
+                        cout << "\n💀 Voce perdeu a luta!" << endl;
+                        cout << "e foi obrigado a correr " << endl;
+                        cout << "❤️ Vidas restantes: " << vidas << endl;
+
+                        if (vidas <= 0)
+                        {
+                            cout << "\n===== GAME OVER =====\n";
+                            jogoAtivo = 0;
+                        }
+                    }
+                }
+                else
+                {
+                    cout << "\n🏃 Voce fugiu do zumbi!\n";
+                }
             }
+            else
+            {
+                if (itemAtual == 1) {
+                    cout << "[Encontrado] Voce avistou um Graveto!" << endl;
+                } else if (itemAtual == 2) {
+                    cout << "[Encontrado] Voce avistou uma Pedra!" << endl;
+                } else if (itemAtual == 3) {
+                    cout << "[Encontrado] Voce avistou uma Fruta!" << endl;
+                } else if (itemAtual == 4) {
+                    cout << "[Encontrado] Voce avistou um Animal!" << endl;
+                } else if (itemAtual == 5) {
+                    cout << "[Encontrado] Voce avistou uma Arvore!" << endl;
+                }
 
-            cout << "Deseja recolher este item para o inventario? (S - Sim / N - Nao): ";
-            char coletar;
-            cin >> coletar;
-
+                cout << "Deseja recolher este item para o inventario? (S - Sim / N - Nao): ";
+                cin >> coletar;
+            }
             if (coletar == 's' || coletar == 'S') {
                 if (itemAtual == 1) {
                     invGravetos = invGravetos + 1;
@@ -166,39 +246,7 @@ int main() {
             
             jogoAtivo = 0; 
         }
-        cout << "\n╔════════ LEGENDA ════════╗" << endl;
-        cout << "║ 😎 Jogador  🥖 Graveto ║" << endl;
-        cout << "║ 🌑 Pedra    🍓 Fruta   ║" << endl;
-        cout << "║ 🐷 Animal   🌲 Madeira  ║" << endl;
-        cout << "║ . Espaco vazio          ║" << endl;
-        cout << "╚═════════════════════════╝" << endl;
-
-        cout << "\n============================ MAPA =============================\n";
-
-        for (int i = 0; i < LINHAS; i++)
-        {
-            cout << "║ ";
         
-
-            for (int j = 0; j < COLUNAS; j++)
-            {
-                if (i == jogadorX && j == jogadorY)
-                    cout << setw(4) << "😎 ";
-                else if (mapa[i][j] == 1)
-                    cout <<setw(4) <<  "🥖 ";
-                else if (mapa[i][j] == 2)
-                    cout << setw(4) << "🌑 ";
-                else if (mapa[i][j] == 3)
-                    cout << setw(4) << "🍓 ";
-                else if (mapa[i][j] == 4)
-                    cout << setw(4) << "🐷 ";
-                else if (mapa[i][j] == 5)
-                    cout << setw(4) << "🌲 ";
-                else
-                    cout << setw(4) << "⬛";
-            }
-            cout << "║" << endl;
-        }
     
     }
         cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
