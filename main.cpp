@@ -28,6 +28,7 @@ int main() {
     int metaFrutas = 0;
     int metaAnimais = 0;
     int metaMadeira = 0;
+    bool venceu = false;
 
     switch (escolhaobjetivo) {
         case 1:
@@ -96,9 +97,8 @@ int main() {
         cout << "║ ⬛ Espaco vazio          ║" << endl;
         cout << "║ 🧟 Zombi                 ║" << endl;
         cout << "╚═════════════════════════╝" << endl;
-    while (jogoAtivo == 1) {
-        
-
+    while (jogoAtivo == 1) 
+    {
         cout << "\n============================ MAPA =============================\n";
 
         for (int i = 0; i < LINHAS; i++)
@@ -173,13 +173,13 @@ int main() {
                 cout << "Deseja lutar? (S/N): ";
                 char escolha;
                 cin >> escolha;
-                if (escolha == 's' || escolha == 'n')
+                if (escolha == 's' || escolha == 'S')
                 {
                     int sorteioLuta = rand() % 100;
 
                     if (sorteioLuta < 60)
                     {
-                        cout << "\n⚔️ Voce derrotou o zumbi!\n";
+                        cout << "\nVoce derrotou o zumbi!\n";
 
                         mapa[jogadorX][jogadorY] = 0;
                     }
@@ -243,13 +243,20 @@ int main() {
             invMadeira >= metaMadeira) 
         {
 
-            
+            venceu = true;
             jogoAtivo = 0; 
         }
         
     
     }
-        cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
+        if (venceu)
+        {
+            cout << " PARABENS! TODOS OS OBJETIVOS FORAM CUMPRIDOS! " << endl;
+        }
+        else
+        {
+            cout << " OBJETIVO NAO CONCLUIDO! VOCE PERDEU TODAS AS VIDAS! " << endl;
+        }
 
         return 0;
 }
