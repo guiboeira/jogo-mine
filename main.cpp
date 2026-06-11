@@ -188,7 +188,7 @@ int main() {
                         vidas--;
 
                         cout << "\n💀 Voce perdeu a luta!" << endl;
-                        cout << "e foi obrigado a correr " << endl;
+                        
                         cout << "❤️ Vidas restantes: " << vidas << endl;
 
                         if (vidas <= 0)
