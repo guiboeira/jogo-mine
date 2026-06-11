@@ -13,9 +13,9 @@ int main() {
     srand(time(0));
     
 
-    cout << "    BEM-VINDO AO MINECRAFT: MUNDO QUADRADO " << endl;
+    cout << "    BEM-VINDO AO MINECRAFT: MUNDO ZUMBIS " << endl;
     cout << "Escolha o seu objetivo para esta partida:" << endl;
-    cout << "1 - Luz e calor (Coletar 4 gravetos e 2 pedras)" << endl;
+    cout << "1 - DESERTO (Coletar 4 gravetos e 2 pedras)" << endl;
     cout << "2 - Corrida (Coletar 1 fruta e 3 animais)" << endl;
     cout << "3 - Construcao (Coletar 3 pedras e 4 arvores)" << endl;
     cout << "Digite o numero da sua escolha: ";
@@ -34,7 +34,7 @@ int main() {
         case 1:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "\nObjetivo selecionado: Luz e calor!";
+            cout << "\nObjetivo selecionado: DESERTO!";
             break;
         case 2:
             metaFrutas = 1; 
@@ -49,7 +49,7 @@ int main() {
         default:
             metaGravetos = 4; 
             metaPedras = 2;
-            cout << "\nOpcao invalida! Iniciando com o objetivo padrao: Luz e calor.";
+            cout << "\nOpcao invalida! Iniciando com o objetivo padrao: DESERTO.";
             break;
     }
 
